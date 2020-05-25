@@ -21,21 +21,17 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let red: CGFloat = 0.50
-    let green: CGFloat = 0.50
-    let blue: CGFloat = 0.50
-    
-    redValueLabel.text = String(format: "%.2f", red)
-    greenValueLabel.text = String(format: "%.2f", green)
-    blueValueLabel.text = String(format: "%.2f", blue)
+    redValueLabel.text = String(format: "%.2f", redSlider.value)
+    greenValueLabel.text = String(format: "%.2f", greenSlider.value)
+    blueValueLabel.text = String(format: "%.2f", blueSlider.value)
     
     redSlider.minimumTrackTintColor = UIColor.red
     greenSlider.minimumTrackTintColor = UIColor.green
     blueSlider.minimumTrackTintColor = UIColor.blue
     
-    colorView.backgroundColor = UIColor(red: red,
-                                        green: green,
-                                        blue: blue,
+    colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
+                                        green: CGFloat(greenSlider.value),
+                                        blue: CGFloat(blueSlider.value),
                                         alpha: 1)
   }
 
@@ -51,13 +47,9 @@ class ViewController: UIViewController {
       print("Wrong slider")
     }
     
-    guard let red = Double(redValueLabel.text!),
-      let green = Double(greenValueLabel.text!),
-      let blue = Double(blueValueLabel.text!) else { return }
-    
-    colorView.backgroundColor = UIColor(red: CGFloat(red),
-                                        green: CGFloat(green),
-                                        blue: CGFloat(blue),
+    colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
+                                        green: CGFloat(greenSlider.value),
+                                        blue: CGFloat(blueSlider.value),
                                         alpha: 1)
   }
   
